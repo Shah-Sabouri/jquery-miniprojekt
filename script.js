@@ -22,7 +22,7 @@ $(document).ready(function () {
 
       const timezoneOffset = data.timezone;
       const localDate = new Date(new Date().getTime() + timezoneOffset * 1000);
-      localDate = setHours(localDate.getHours() - 2);
+      localDate.setHours(localDate.getHours() - 2);
       const localTime = localDate.toLocaleTimeString('sv-SE', {
         hour: '2-digit',
         minute: '2-digit'
