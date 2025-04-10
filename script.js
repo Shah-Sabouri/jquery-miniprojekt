@@ -1,6 +1,21 @@
 // Vänta tills allt på sidan är laddat
 $(document).ready(function () {
 
+  $('#getWeather').on('click', function () {
+    const city = $('#city').val(); // Hämtar värdet från input-fält
+
+    if (city.trim() === '') {
+      $('#error').text('Skriv in stad...');
+      $('#return').html('');
+      return;
+    }
+
+    $('#error').text(''); // Tömmer tidigare felmeddelande
+
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm&appid=84ccd82bceb5e067b1dd317684feeca0&units=metric&lang=se`;
+
+  })
+
   // TODO: Skapa funktionen för att hämta väderdata
   // Tips: Funktionen ska ta emot en parameter
   
@@ -12,7 +27,6 @@ $(document).ready(function () {
   // Om det är tomt, visa ett felmeddelande i #error och avsluta funktionen
 
   // TODO: Skapa API-URL (använd backticks och infoga city och din API-nyckel)
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm&appid=84ccd82bceb5e067b1dd317684feeca0&units=metric&lang=se`; // <-- du ska bygga URL:en här
 
   // TODO: Gör ett anrop till OpenWeatherMap med $.get()
   // Tips: Använd url som du byggde ovan och logga svaret i konsolen
