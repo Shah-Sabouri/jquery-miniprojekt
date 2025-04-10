@@ -4,6 +4,7 @@ $(document).ready(function () {
     const city = $('#city').val();
     console.log("Input för stad: ", city);
 
+    // FELHANTERING FÖR TOMT FÄLT
     if (city.trim() === '') {
       $('#error').text('Skriv en stad...');
       $('#result').html('');
@@ -11,7 +12,6 @@ $(document).ready(function () {
       return;
     }
 
-    // FELHANTERING
     $('#error').text('');
     console.log("Sök efter väder för stad:", city);
 
@@ -19,7 +19,7 @@ $(document).ready(function () {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=se`;
     console.log("API URL:", url);
 
-    //HÄMTA VÄDERDATA
+    //HÄMTA VÄDERDATA FRÅN API
     $.get(url, function (data) {
       console.log("API-svar:", data);
 
@@ -55,7 +55,7 @@ $(document).ready(function () {
         console.log("Stad har tagits bort");
       });
     
-    // NÄR STADEN EJ HITTATS
+    // OM STADEN EJ HITTATS/FEL UPPSTÅR
     }).fail(function () {
       $('#error').text('Staden hittades inte/fel uppstod');
       console.log("Fel vid API-anrop/ogiltig stad.");
