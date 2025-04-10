@@ -20,11 +20,19 @@ $(document).ready(function () {
       const temp = data.main.temp;
       const desc = data.weather[0].description;
 
+      const timezoneOffset = data.timezone;
+      const localDate = new Date(new Date().getTime() + timezoneOffset * 1000);
+      const localTime = localDate.toLocaleTimeString('sv-SE', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
       $('#result').append(`
         <div class="weather-card">
           <h3>Väder i ${name}, ${country}</h3>
           <p>${desc}</p>
           <p>Temperatur: ${temp} °C</p>
+          <p>Lokal tid: ${localTime}</p>
         </div>
       `);
     }).fail(function () {
@@ -33,9 +41,9 @@ $(document).ready(function () {
     });
   });
 
-  $('#city').on('keypress', function(e) {
+  $('#city').on('keypress', function (e) {
     if (e.which === 13) {
-      $('getWeather').click();
+      $('#getWeather').click();
     }
   });
 
