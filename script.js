@@ -34,7 +34,7 @@ $(document).ready(function () {
           <p>${desc}</p>
           <p>Temperatur: ${temp} °C</p>
           <p>Lokal tid: ${localTime}</p>
-          <button class="remove">x</button>
+          <button class="remove">Ta bort</button>
         </div>
       `);
 
