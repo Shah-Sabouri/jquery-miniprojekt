@@ -1,27 +1,38 @@
-// Vänta tills allt på sidan är laddat
 $(document).ready(function () {
 
   $('#getWeather').on('click', function () {
-    const city = $('#city').val(); // Hämtar värdet från input-fält
+    const city = $('#city').val();
 
     if (city.trim() === '') {
-      $('#error').text('Skriv in stad...');
-      $('#return').html('');
+      $('#error').text('Skriv en stad...');
+      $('#result').html('');
       return;
     }
 
-    $('#error').text(''); // Tömmer tidigare felmeddelande
+    $('#error').text('');
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm&appid=84ccd82bceb5e067b1dd317684feeca0&units=metric&lang=se`;
+    const apiKey = "84ccd82bceb5e067b1dd317684feeca0";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=se`;
 
-  })
+    $.get(url, function (data) {
+      const name = data.name;
+      const country = data.sys.country;
+      const temp = data.main.temp;
+      const desc = data.weather[0].description;
 
-  // TODO: Skapa funktionen för att hämta väderdata
-  // Tips: Funktionen ska ta emot en parameter
-  
-  // TODO: Hämta API-nyckeln från config.js
-  // Tips: Använd API_KEY variabeln som är definierad i config.js
-  const apiKey = "84ccd82bceb5e067b1dd317684feeca0";
+      $('#result').html(`
+        <h3>Väder i ${name}, ${country}</h3>
+        <p>${desc}</p>
+        <p>Temperatur: ${temp} °C</p>
+      `);
+    }).fail(function () {
+      $('#error').text('Staden hittades inte/fel uppstod');
+      $('#result').html('');
+    });
+  });
+
+});
+
   
   // TODO: Kontrollera om fältet är tomt
   // Om det är tomt, visa ett felmeddelande i #error och avsluta funktionen
@@ -44,5 +55,3 @@ $(document).ready(function () {
   // TODO: Välj knappen och lyssna på klick
   // Tips: Använd .on("click", ...) på rätt element
   
-
-});
