@@ -2,24 +2,34 @@ $(document).ready(function () {
 
   $('#getWeather').on('click', function () {
     const city = $('#city').val();
+    console.log("Input för stad: ", city);
 
     if (city.trim() === '') {
       $('#error').text('Skriv en stad...');
       $('#result').html('');
+      console.log("Ingen stad angiven.");
       return;
     }
 
+    // FELHANTERING
     $('#error').text('');
+    console.log("Sök efter väder för stad:", city);
 
     const apiKey = "84ccd82bceb5e067b1dd317684feeca0";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=se`;
+    console.log("API URL:", url);
 
+    //HÄMTA VÄDERDATA
     $.get(url, function (data) {
+      console.log("API-svar:", data);
+
       const name = data.name;
       const country = data.sys.country;
       const temp = data.main.temp;
       const desc = data.weather[0].description;
+      console.log(`Väder i ${name}, ${country}: ${temp}°C, ${desc}`);
 
+      // TIDSZON
       const timezoneOffset = data.timezone;
       const localDate = new Date(new Date().getTime() + timezoneOffset * 1000);
       localDate.setHours(localDate.getHours() - 2);
@@ -27,6 +37,7 @@ $(document).ready(function () {
         hour: '2-digit',
         minute: '2-digit'
       });
+      console.log("Lokal tid:", localTime);
 
       $('#result').append(`
         <div class="weather-card">
@@ -38,18 +49,24 @@ $(document).ready(function () {
         </div>
       `);
 
+      // TA BORT STAD
       $('.remove').on('click', function() {
         $(this).parent().remove();
+        console.log("Stad har tagits bort");
       });
-
+    
+    // NÄR STADEN EJ HITTATS
     }).fail(function () {
       $('#error').text('Staden hittades inte/fel uppstod');
+      console.log("Fel vid API-anrop/ogiltig stad.");
     });
   });
 
+  // ENTER-KNAPP
   $('#city').on('keypress', function (e) {
     if (e.which === 13) {
       $('#getWeather').click();
+      console.log("Enter tryckt, söker väder...");
     }
   });
 
