@@ -6,13 +6,13 @@ $(document).ready(function () {
   
   // TODO: Hämta API-nyckeln från config.js
   // Tips: Använd API_KEY variabeln som är definierad i config.js
-  const apiKey = ;
+  const apiKey = "84ccd82bceb5e067b1dd317684feeca0";
   
   // TODO: Kontrollera om fältet är tomt
   // Om det är tomt, visa ett felmeddelande i #error och avsluta funktionen
 
   // TODO: Skapa API-URL (använd backticks och infoga city och din API-nyckel)
-  const url = ``; // <-- du ska bygga URL:en här
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm&appid=84ccd82bceb5e067b1dd317684feeca0&units=metric&lang=se`; // <-- du ska bygga URL:en här
 
   // TODO: Gör ett anrop till OpenWeatherMap med $.get()
   // Tips: Använd url som du byggde ovan och logga svaret i konsolen
