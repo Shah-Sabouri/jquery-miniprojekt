@@ -47,6 +47,11 @@ body {
     color: red;
     text-align: center;
     margin: 20px;
+    display: none;
+  }
+
+  #error.show {
+    display: block;
   }
   
   #result {
