@@ -1,0 +1,47 @@
+body {
+    font-family: sans-serif;
+    background: #f0f4f8;
+    padding: 2rem;
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  #weatherForm {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  input {
+    padding: 0.5rem;
+    flex: 1;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  #error {
+    color: red;
+    text-align: center;
+  }
+  
+  #result {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }

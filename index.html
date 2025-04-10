@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Väderapp med jQuery</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script> <!--  Lägg till jQuery-biblioteket -->
+  <script src="config.js"></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <h1>Väderapp</h1>
+
+  <div id="weatherForm">
+    <input type="text" id="city" placeholder="Skriv en stad...">
+    <button type="button" id="getWeather">Hämta vädret</button>
+  </div>
+
+  <div id="result">
+    <!-- Här visas resultaten -->
+  </div>
+  <div id="error">
+    <!-- Här visas error -->
+  </div>
+
+</body>
+
+</html>
