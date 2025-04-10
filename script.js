@@ -30,7 +30,7 @@ $(document).ready(function () {
       console.log(`Väder i ${name}, ${country}: ${temp}°C, ${desc}`);
 
       // TIDSZON
-      const timezoneOffset = data.timezone;
+      const timezoneOffset = data.timezone; // Mäts i sekunder
       const localDate = new Date(new Date().getTime() + timezoneOffset * 1000);
       localDate.setHours(localDate.getHours() - 2);
       const localTime = localDate.toLocaleTimeString('sv-SE', {
@@ -39,6 +39,7 @@ $(document).ready(function () {
       });
       console.log("Lokal tid:", localTime);
 
+      //Append gör att resultaten staplas i lista
       $('#result').append(`
         <div class="weather-card">
           <h3>Väder i ${name}, ${country}</h3>
@@ -64,8 +65,8 @@ $(document).ready(function () {
 
   // ENTER-KNAPP
   $('#city').on('keypress', function (e) {
-    if (e.which === 13) {
-      $('#getWeather').click();
+    if (e.which === 13) { // Eftersom Enter-knappens värde är 13
+      $('#getWeather').click(); // Simulerar klick på knapp
       console.log("Enter tryckt, söker väder...");
     }
   });
