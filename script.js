@@ -22,6 +22,7 @@ $(document).ready(function () {
 
       const timezoneOffset = data.timezone;
       const localDate = new Date(new Date().getTime() + timezoneOffset * 1000);
+      localDate = setHours(localDate.getHours() - 2);
       const localTime = localDate.toLocaleTimeString('sv-SE', {
         hour: '2-digit',
         minute: '2-digit'
@@ -33,11 +34,16 @@ $(document).ready(function () {
           <p>${desc}</p>
           <p>Temperatur: ${temp} °C</p>
           <p>Lokal tid: ${localTime}</p>
+          <button class="remove">x</button>
         </div>
       `);
+
+      $('.remove').on('click', function() {
+        $(this).parent().remove();
+      });
+
     }).fail(function () {
       $('#error').text('Staden hittades inte/fel uppstod');
-      $('#result').html('');
     });
   });
 
