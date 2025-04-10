@@ -20,10 +20,12 @@ $(document).ready(function () {
       const temp = data.main.temp;
       const desc = data.weather[0].description;
 
-      $('#result').html(`
-        <h3>Väder i ${name}, ${country}</h3>
-        <p>${desc}</p>
-        <p>Temperatur: ${temp} °C</p>
+      $('#result').append(`
+        <div class="weather-card">
+          <h3>Väder i ${name}, ${country}</h3>
+          <p>${desc}</p>
+          <p>Temperatur: ${temp} °C</p>
+        </div>
       `);
     }).fail(function () {
       $('#error').text('Staden hittades inte/fel uppstod');
