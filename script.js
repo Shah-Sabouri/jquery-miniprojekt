@@ -31,6 +31,12 @@ $(document).ready(function () {
     });
   });
 
+  $('#city').on('keypress', function(e) {
+    if (e.which === 13) {
+      $('getWeather').click();
+    }
+  });
+
 });
 
   
