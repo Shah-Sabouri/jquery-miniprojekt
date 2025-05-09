@@ -1,6 +1,17 @@
 # Väderapp med jQuery
 
-## Introduktion
+## Instruktioner för att sätta igång sidan
+
+1. Klona appen via terminalen:
+```sh
+git clone https://github.com/Shah-Sabouri/jquery-miniprojekt.git
+```
+2. Öppna projektmappen i VSCode
+3. Navigera till filen `index.html` i mappen `jquery-miniprojekt`.  
+4. Klicka på knappen **Go Live** längst ner till höger i VSCode  
+   *(förutsätter att du har tillägget **Live Server** installerat)*.
+
+<!-- ## Introduktion
 
 Ni ska skapa en app som hämtar väderinformation för en given stad och visar resultatet. Ni kommer att använda jQuery för att hantera användarinteraktioner och skicka API-förfrågningar till OpenWeatherMap för att få väderdata.
 
@@ -51,4 +62,4 @@ Det finns grundläggande CSS i `style.css` men kan du lägga till din egen styli
 
 ---
 
-Happy Coding!
+Happy Coding! -->
